@@ -121,10 +121,15 @@ int main(void)
 
     for (int i = 0; i < Beta; i++)
     {
-        X[i] = (rand() % 1000)/1000.0;
-        R[i] = 3.86 + (X[i] * 0.14);
+            X[i] = (rand() % 1000) / 1000.0;
 
-       // plik << X[i] << " " <<R[i]<< endl;
+            while (X[i] < 0.01)
+            {
+                X[i] = (rand() % 1000) / 1000.0;
+            }
+
+            R[i] = 3.86 + (X[i] * 0.14);
+        // plik << X[i] << " " <<R[i]<< endl;
     }
     
     cudaMemcpy(dX, X, size, cudaMemcpyHostToDevice);
