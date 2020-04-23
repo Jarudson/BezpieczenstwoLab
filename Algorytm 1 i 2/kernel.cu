@@ -24,7 +24,7 @@ __global__ void chaotic(double *X, double *R, int y)
         {
            // X[index] = X[index] * R[index] * (1 - X[index]);
         }
-        R[index] = 3.99;
+       // R[index] = 3.99;
     }
     else
     {
@@ -86,6 +86,7 @@ __global__ void postprocess(double* X, double* R, unsigned int* v)
         }
 
         v[index] = ((M1 + M4) ^ M3) + M2;
+        v[index] = v[index] % 256;
     }
 }
 
